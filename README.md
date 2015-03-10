@@ -5,13 +5,11 @@ Examples:
 
 ```java
 
-String id = Schedulers.newDefault().schedule(
-        new TriggerTask(new PrintTask(), new PeriodicTrigger(1000))); // (1)
+String id = Schedulers.newDefault().schedule(new PrintTask(), new PeriodicTrigger(1000)); // (1)
 
 System.out.println(id); // (2)
 
-String id2 = Schedulers.newDefault().schedule(
-        new TriggerTask(new PrintTask(), new PeriodicTrigger(2000))); // (3)
+String id2 = Schedulers.newDefault().schedule(new PrintTask(), new CronTrigger("0/2 * * * * *")); // (3)
 
 System.out.println(id2); // (4)
 
@@ -28,8 +26,7 @@ TimeUnit.SECONDS.sleep(5); // (9)
 Schedulers.stopAll(); // (10)
 
 System.out.println("Executing threadpool scheduler");
-String id3 = Schedulers.newThreadPoolScheduler(4).schedule(
-        new TriggerTask(new PrintTask(), nnew CronTrigger("0/4 * * * * *"))); // (11)
+String id3 = Schedulers.newThreadPoolScheduler(4).schedule(new PrintTask(), new PeriodicTrigger(4000)); // (11)
 
 System.out.println(id3); // (12)
 
@@ -37,11 +34,20 @@ TimeUnit.SECONDS.sleep(40); // (13)
 
 Schedulers.stopAll(); // (14)
 
+
+
+public class PrintTask implements Runnable {
+    @Override
+    public void run() {
+        System.out.println("Executed");
+    }
+}
+
 ```
 
 1. Scheduler 1: Schedules a task for every one second.
 2. Prints the scheduler id.
-3. Scheduler 2 Schedules an another task for every two second.
+3. Scheduler 2 Schedules an another task for every two second. This uses cron expression.
 4. Prints the scheduler 2 id.
 5. Prints the running scheduler counts. This will prints '2'
 6. Sleep for five seconds
@@ -49,7 +55,7 @@ Schedulers.stopAll(); // (14)
 8. Prints the running scheduler counts. This will prints '1'
 9. Sleep for five seconds
 10. Stop all running schedulers.
-11. Scheduler 3: Schedules an another task for every four seconds. This uses cron expression.
+11. Scheduler 3: Schedules an another task for every four seconds. The executor is created using threadpool and 4 threads used.
 12. Prints the scheduler 3 id.
 13. Sleep for fourty seconds.
 14. Stop all running schedulers.
