@@ -1,5 +1,8 @@
 # Clockwise
-Lightweight Java task scheduler inspired by Spring framework scheduler.
+Lightweight Java task scheduler with fluent API inspired by Spring framework scheduler.
+
+Clockwise is initially developed for Audit4j - An open source auditing framework.
+
 
 Examples:
 
@@ -34,6 +37,13 @@ TimeUnit.SECONDS.sleep(40); // (13)
 
 Schedulers.stopAll(); // (14)
 
+//Registor tasks.
+
+Schedulers.taskRegistry().registor(new TriggerTask(new PrintTask(), new PeriodicTrigger(1000))).registor(
+    new TriggerTask(new PrintTask(), new PeriodicTrigger(3000)));
+        
+Schedulers.taskRegistry().scheduleAll();
+        
 
 
 public class PrintTask implements Runnable {
