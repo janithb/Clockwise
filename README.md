@@ -38,11 +38,10 @@ TimeUnit.SECONDS.sleep(40); // (13)
 Schedulers.stopAll(); // (14)
 
 //Registor tasks.
-
 Schedulers.taskRegistry().registor(new TriggerTask(new PrintTask(), new PeriodicTrigger(1000))).registor(
     new TriggerTask(new PrintTask(), new PeriodicTrigger(3000)));
         
-Schedulers.taskRegistry().scheduleAll();
+List<String> jobIds = Schedulers.taskRegistry().scheduleAll();
         
 
 
