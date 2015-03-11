@@ -1,7 +1,7 @@
 # Clockwise
 Lightweight Java task scheduler with fluent API, inspired by Spring framework scheduler.
 
-Clockwise is initially developed for [Audit4j](http://audit4j.org) - An open source auditing framework.
+Clockwise is initially developed for [Audit4j](http://audit4j.org) - *An open source auditing framework*.
 
 Please visit the [FAQ](https://github.com/janithb/Clockwise/wiki/FAQ) page for more information.
 
