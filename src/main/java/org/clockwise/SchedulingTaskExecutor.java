@@ -21,7 +21,6 @@ package org.clockwise;
  * 
  * @author Juergen Hoeller
  * @since 2.0
- * @see SchedulingAwareRunnable
  * @see org.audit4j.schedule.springframework.core.task.TaskExecutor
  * @see org.springframework.scheduling.commonj.WorkManagerTaskExecutor
  */
