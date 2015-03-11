@@ -40,9 +40,9 @@ Schedulers.stopAll(); // (14)
 
 //Registor tasks.
 Schedulers.taskRegistry().registor(new TriggerTask(new PrintTask(), new PeriodicTrigger(1000))).registor(
-    new TriggerTask(new PrintTask(), new PeriodicTrigger(3000)));
+    new TriggerTask(new PrintTask(), new PeriodicTrigger(3000))); // (15)
         
-List<String> jobIds = Schedulers.taskRegistry().scheduleAll();
+List<String> jobIds = Schedulers.taskRegistry().scheduleAll(); // (16)
         
 
 
@@ -57,7 +57,7 @@ public class PrintTask implements Runnable {
 
 1. Scheduler 1: Schedules a task for every one second.
 2. Prints the scheduler id.
-3. Scheduler 2 Schedules an another task for every two second. This uses cron expression.
+3. Scheduler 2 Schedules an another task for every two second. This uses Cron expression.
 4. Prints the scheduler 2 id.
 5. Prints the running scheduler counts. This will prints '2'
 6. Sleep for five seconds
@@ -65,7 +65,9 @@ public class PrintTask implements Runnable {
 8. Prints the running scheduler counts. This will prints '1'
 9. Sleep for five seconds
 10. Stop all running schedulers.
-11. Scheduler 3: Schedules an another task for every four seconds. The executor is created using threadpool and 4 threads used.
+11. Scheduler 3: Schedules an another task for every four seconds. The executor is created using thread pool and 4 threads used.
 12. Prints the scheduler 3 id.
 13. Sleep for fourty seconds.
 14. Stop all running schedulers.
+15. Register trigger tasks.
+16. Schedule all registered tasks.
