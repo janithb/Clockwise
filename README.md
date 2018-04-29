@@ -1,5 +1,5 @@
 # Clockwise
-Lightweight Java task scheduler with fluent API, inspired by Spring framework scheduler.
+Lightweight Java task scheduler with fluent API, inspired from Spring framework scheduler.
 
 Clockwise is initially developed for [Audit4j](http://audit4j.org) - *An open source auditing framework*.
 
